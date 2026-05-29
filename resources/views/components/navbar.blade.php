@@ -16,6 +16,22 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('tabel') }}">Tabel</a>
                 </li>
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    </li>
+                @endguest
+                @auth
+                    <li class="nav-item bg-danger rounded">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="nav-link btn btn-link text-white">
+                                <i class="fa-solid fa-right-from-bracket"></i> Logout
+                            </button>
+                        </form>
+                    </li>
+                @endauth
+
             </ul>
         </div>
 </nav>
